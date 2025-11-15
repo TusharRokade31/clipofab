@@ -44,6 +44,50 @@
         <!-- Responsive CSS -->
         <link rel="stylesheet" href="css/responsive.css">
 
+               <style>
+          
+h1 {
+  color: coral;
+}
+.grid-container {
+  columns: 5 200px;
+  column-gap: 1.5rem;
+  width: 90%;
+  margin: 0 auto;
+  div {
+    width: 150px;
+    margin: 0 1.5rem 1.5rem 0;
+    display: inline-block;
+    width: 100%;
+    border: solid 2px black;
+    padding: 5px;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+    border-radius: 5px;
+    transition: all .25s ease-in-out;
+    &:hover img {
+      filter: grayscale(0);
+    }
+    &:hover {
+      border-color: coral;
+    }
+    img {
+      width: 100%;
+      /* filter: grayscale(100%); */
+      border-radius: 5px;
+      transition: all .25s ease-in-out;
+    }
+    p {
+      margin: 5px 0;
+      padding: 0;
+      text-align: center;
+      font-style: italic;
+    }
+  }
+}
+
+
+        </style>
+
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     </head>
     <body data-spy="scroll" data-target="#navmenu" data-offset="70">
@@ -65,96 +109,64 @@
 
         <div class="header-height"></div>
 		
-		<section class="page-header page-header-products padding">
-		    <div class="container">
-		        <div class="page-content text-center">
-		            <h2>Our Products</h2>
-		            <p>Transforming spaces with precision, elegance, and innovative ceiling solutions.</p>
-		        </div>
-		    </div>
-		</section><!--/.page-header-->
+   <!--/.page-header-->
 		
         
          <section class="service-section bg-grey padding">
            <div class="dots"></div>
             <div class="container">
                 <div class="section-heading text-center mb-40">
-                   <span>Products</span>
-                   <h2>Our Products – Tailored for Every Space</h2>
-                   <p>
-                    <strong>ClipOFab</strong> offers a range of innovative <strong>textile ceiling and wall systems</strong> that are as versatile as they are beautiful. Perfect for homes, offices, restaurants, theaters, and more, our products bring the best in <strong>acoustic, backlit, opaque</strong>, and <strong>printable lighting</strong> to your space. Here&rsquo;s what we offer:
-                   </p>
+                   <span>Product</span>
+                   <h2>ClipOFab Acoustic</h2>
+                    <p>Want to create a quieter, more comfortable environment? Our <strong>acoustic textile coverings</strong> offer <strong>sound absorption</strong> and combine perfectly with <strong>sound insulation</strong> for spaces that need optimal acoustics.</p>
                 </div>
-                <div class="service-wrap row">
-                    <div class="col-lg-4 col-sm-6 padding-15">
-                        <div class="service-item">
-                            <div class="service-thumb">
-                                <img src="img/service/service-1.jpg" alt="thumb">
-                            </div>
-                            <div class="service-content">
-                               
-                                <h3>ClipOFab Opaque</h3>
-                                <p>&nbsp;Ideal for both <strong>residential</strong> and <strong>commercial</strong> applications, <strong>ClipOFab Opaque</strong> is a <strong>quick-to-install</strong> alternative to plasterboard. It delivers a <strong>smooth, flawless finish</strong> while being eco-friendly and <strong>maintenance-free</strong>.</p>
-                                <a href="clip-o-fab-opaque.html">View Projects</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 padding-15">
-                        <div class="service-item">
-                            <div class="service-thumb">
-                                <img src="img/service/service-2.jpg" alt="thumb">
-                            </div>
-                            <div class="service-content">
-                               
-                                <h3>ClipOFab Translucent</h3>
-                                <p>Perfect for creating stunning lighting effects, <strong>ClipOFab Backlit</strong> textiles are <strong>translucent and printable</strong>, making them ideal for adding a sophisticated glow to any space. They diffuse light beautifully, creating depth.</p>
-                                <a href="clip-o-fab-translucent.html">View Projects</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 padding-15">
-                        <div class="service-item">
-                            <div class="service-thumb">
-                                <img src="img/service/service-3.jpg" alt="thumb">
-                            </div>
-                            <div class="service-content">
-                               
-                                <h3>ClipOFab Acoustic</h3>
-                                <p>Want to create a quieter, more comfortable environment? Our <strong>acoustic textile coverings</strong> offer <strong>sound absorption</strong> and combine perfectly with <strong>sound insulation</strong> for spaces that need optimal acoustics.</p>
-                                <a href="clip-o-fab-acoustic.html">View Projects</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
+
+              <div class="grid-container">
+  <div>
+    <img class='grid-item grid-item-1' src='https://images.unsplash.com/photo-1544568100-847a948585b9?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt=''>
+    <!-- <p>"I'm so happy today!"</p> -->
+  </div>
+  <div>
+    <img class='grid-item grid-item-2' src='https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt=''>
+    <!-- <p>"I see those nugs."</p> -->
+  </div>
+  <div>
+    <img class='grid-item grid-item-3' src='https://images.unsplash.com/photo-1510771463146-e89e6e86560e?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt=''>
+    <!-- <p>"I love you so much!"</p> -->
+  </div>
+  <div>
+    <img class='grid-item grid-item-4' src='https://images.unsplash.com/photo-1507146426996-ef05306b995a?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt=''>
+    <!-- <p>"I'm the baby of the house!"</p> -->
+  </div>
+  <div>
+    <img class='grid-item grid-item-5' src='https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt=''>
+    <!-- <p>"Are you gunna throw the ball?"</p> -->
+  </div>
+  <div>
+    <img class='grid-item grid-item-6' src='https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt=''>
+    <!-- <p>"C'mon friend!"</p> -->
+  </div>
+  <div>
+    <img class='grid-item grid-item-7' src='https://images.unsplash.com/photo-1552053831-71594a27632d?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt=''>
+    <!-- <p>"A rose for mommy!"</p> -->
+  </div>
+  <div>
+    <img class='grid-item grid-item-8' src='https://images.unsplash.com/photo-1518717758536-85ae29035b6d?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt=''>
+    <!-- <p>"You gunna finish that?"</p> -->
+  </div>
+  <div>
+    <img class='grid-item grid-item-9' src='https://images.unsplash.com/photo-1535930891776-0c2dfb7fda1a?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt=''>
+    <!-- <p>"We can't afford a cat!"</p> -->
+  </div>
+  <div>
+    <img class='grid-item grid-item-10' src='https://images.unsplash.com/photo-1504595403659-9088ce801e29?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt=''>
+    <!-- <p>"Dis my fren!"</p> -->
+  </div>
+</div>
         </section>
-        <!--/.service-section-->
-        
-          <div class="sponsor-section bg-grey">
-           <div class="dots"></div>
-            <div class="container">
-                <div id="sponsor-carousel" class="sponsor-carousel owl-carousel">
-                    <div class="sponsor-item">
-                        <img src="img/sponsers/sponser-1.png" alt="sponsor">
-                    </div>
-                    <div class="sponsor-item">
-                        <img src="img/sponsers/sponser-2.png" alt="sponsor">
-                    </div>
-                    <div class="sponsor-item">
-                        <img src="img/sponsers/sponser-3.png" alt="sponsor">
-                    </div>
-                    <div class="sponsor-item">
-                        <img src="img/sponsers/sponser-4.png" alt="sponsor">
-                    </div>
-                    <div class="sponsor-item">
-                        <img src="img/sponsers/sponser-5.png" alt="sponsor">
-                    </div>
-                    <div class="sponsor-item">
-                        <img src="img/sponsers/sponser-6.png" alt="sponsor">
-                    </div>
-                </div>
-            </div>
-        </div>
+       
 		
         <script>
     fetch("footer.html")

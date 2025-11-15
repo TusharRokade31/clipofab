@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Reviews Carousel</title>
+  
+  <!-- Slick CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .video-review-section {
+      padding: 60px 0;
+      background: #f9f9f9;
+    }
+
+    .page-width {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title {
+      font-size: 36px;
+      font-weight: bold;
+      color: #333333;
+      margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+      font-size: 18px;
+      color: #666666;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .video-reviews-slider {
+      position: relative;
+    }
+
+    .video-review-item {
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      padding: 0 20px;
+      outline: none;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 10px;
+      aspect-ratio: 9 / 16;
+      background: #000;
+    }
+
+    .video-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .video-container.playing {
+      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Video Control Buttons */
+    .video-control-btn {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+      border: none;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 100;
+      transition: all 0.3s ease;
+      color: #fff;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .play-pause-btn {
+      top: 15px;
+      left: 15px;
+    }
+
+    .mute-btn {
+      bottom: 15px;
+      right: 15px;
+    }
+
+    /* Show control buttons only on center slide */
+    .slick-slide.slick-center .video-control-btn {
+      opacity: 1;
+      visibility: visible;
+      display: flex !important;
+    }
+
+    .video-control-btn:hover {
+      background: rgba(0, 0, 0, 0.9);
+    }
+
+    .video-control-btn svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .pause-icon,
+    .volume-on-icon {
+      display: none;
+    }
+
+    /* Slick Slider Styling */
+    .video-reviews-slider .slick-slide {
+      opacity: 0.5;
+      transform: scale(0.85);
+      transition: all 0.3s ease;
+    }
+
+    .video-reviews-slider .slick-slide.slick-center {
+      opacity: 1;
+      transform: scale(1);
+      z-index: 10;
+    }
+
+    .video-reviews-slider .slick-list {
+      overflow: visible;
+    }
+
+    /* Slick Navigation */
+    .video-reviews-slider .slick-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #333333 !important;
+      color: #ffffff !important;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      opacity: 0.8;
+      z-index: 100;
+      border: none;
+      cursor: pointer;
+      font-size: 0;
+    }
+
+    .video-reviews-slider .slick-arrow:before {
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      font-size: 18px;
+      color: #ffffff;
+    }
+
+    .video-reviews-slider .slick-arrow:hover {
+      background: #ff5722 !important;
+      opacity: 1;
+    }
+
+    .video-reviews-slider .slick-prev {
+      left: 0px;
+    }
+
+    .video-reviews-slider .slick-prev:before {
+      content: '\f053';
+    }
+
+    .video-reviews-slider .slick-next {
+      right: 0px;
+    }
+
+    .video-reviews-slider .slick-next:before {
+      content: '\f054';
+    }
+
+    /* Slick Dots */
+    .video-reviews-slider .slick-dots {
+      text-align: center;
+      margin-top: 30px;
+      padding: 0;
+      list-style: none;
+      display: flex !important;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .video-reviews-slider .slick-dots li {
+      display: inline-block;
+      margin: 0;
+    }
+
+    .video-reviews-slider .slick-dots li button {
+      width: 12px;
+      height: 12px;
+      background: #ddd;
+      display: block;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      font-size: 0;
+    }
+
+    .video-reviews-slider .slick-dots li button:before {
+      display: none;
+    }
+
+    .video-reviews-slider .slick-dots li.slick-active button,
+    .video-reviews-slider .slick-dots li:hover button {
+      background: #ff5722;
+      transform: scale(1.2);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .section-title {
+        font-size: 28px;
+      }
+
+      .section-subtitle {
+        font-size: 16px;
+      }
+
+      .video-control-btn {
+        width: 40px;
+        height: 40px;
+      }
+
+      .video-control-btn svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      .play-pause-btn {
+        top: 10px;
+        left: 10px;
+      }
+
+      .mute-btn {
+        bottom: 10px;
+        right: 10px;
+      }
+
+      .video-reviews-slider .slick-arrow {
+        width: 40px;
+        height: 40px;
+      }
+
+      .video-reviews-slider .slick-arrow:before {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<section class="video-review-section">
+  <div class="page-width">
+    <div class="section-header">
+      <h2 class="section-title">Customer Video Reviews</h2>
+      <p class="section-subtitle">See what our customers have to say</p>
+    </div>
+
+    <div class="video-reviews-slider">
+      <!-- Video Review Item 1 -->
+      <div class="video-review-item">
+        <div class="video-wrapper">
+          <div class="video-container">
+            <video loop muted playsinline>
+              <source src="https://cdn.shopify.com/videos/c/o/v/7daef148e2a6416daffd5bf9682b015f.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+        
+            <!-- Play/Pause Control Button -->
+
+
+            <!-- Mute/Unmute Button -->
+           
+          </div>
+        </div>
+      </div>
+
+      <!-- Video Review Item 2 -->
+      <div class="video-review-item">
+        <div class="video-wrapper">
+          <div class="video-container">
+            <video loop muted playsinline>
+              <source src="https://cdn.shopify.com/videos/c/o/v/7daef148e2a6416daffd5bf9682b015f.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+        
+
+
+           
+          </div>
+        </div>
+      </div>
+
+      <!-- Video Review Item 3 -->
+      <div class="video-review-item">
+        <div class="video-wrapper">
+          <div class="video-container">
+            <video loop muted playsinline>
+              <source src="https://cdn.shopify.com/videos/c/o/v/7daef148e2a6416daffd5bf9682b015f.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+        
+
+
+           
+          </div>
+        </div>
+      </div>
+
+          <!-- Video Review Item 3 -->
+      <div class="video-review-item">
+        <div class="video-wrapper">
+          <div class="video-container">
+            <video loop muted playsinline>
+              <source src="https://cdn.shopify.com/videos/c/o/v/7daef148e2a6416daffd5bf9682b015f.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+        
+
+
+           
+          </div>
+        </div>
+      </div>
+
+
+          <!-- Video Review Item 3 -->
+      <div class="video-review-item">
+        <div class="video-wrapper">
+          <div class="video-container">
+            <video loop muted playsinline>
+              <source src="https://cdn.shopify.com/videos/c/o/v/7daef148e2a6416daffd5bf9682b015f.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+        
+
+
+           
+          </div>
+        </div>
+      </div>
+
+
+          <!-- Video Review Item 3 -->
+      <div class="video-review-item">
+        <div class="video-wrapper">
+          <div class="video-container">
+            <video loop muted playsinline>
+              <source src="https://cdn.shopify.com/videos/c/o/v/7daef148e2a6416daffd5bf9682b015f.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+        
+
+
+           
+          </div>
+        </div>
+      </div>
+
+          <!-- Video Review Item 3 -->
+      <div class="video-review-item">
+        <div class="video-wrapper">
+          <div class="video-container">
+            <video loop muted playsinline>
+              <source src="https://cdn.shopify.com/videos/c/o/v/7daef148e2a6416daffd5bf9682b015f.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+        
+
+
+           
+          </div>
+        </div>
+      </div>
+
+
+          <!-- Video Review Item 3 -->
+      <div class="video-review-item">
+        <div class="video-wrapper">
+          <div class="video-container">
+            <video loop muted playsinline>
+              <source src="https://cdn.shopify.com/videos/c/o/v/7daef148e2a6416daffd5bf9682b015f.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+        
+
+
+           
+          </div>
+        </div>
+      </div>
+
+          <!-- Video Review Item 3 -->
+      <div class="video-review-item">
+        <div class="video-wrapper">
+          <div class="video-container">
+            <video loop muted playsinline>
+              <source src="https://cdn.shopify.com/videos/c/o/v/7daef148e2a6416daffd5bf9682b015f.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+        
+
+
+           
+          </div>
+        </div>
+      </div>
+
+
+          <!-- Video Review Item 3 -->
+      <div class="video-review-item">
+        <div class="video-wrapper">
+          <div class="video-container">
+            <video loop muted playsinline>
+              <source src="https://cdn.shopify.com/videos/c/o/v/7daef148e2a6416daffd5bf9682b015f.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+        
+
+
+           
+          </div>
+        </div>
+      </div>
+
+
+          <!-- Video Review Item 3 -->
+      <div class="video-review-item">
+        <div class="video-wrapper">
+          <div class="video-container">
+            <video loop muted playsinline>
+              <source src="https://cdn.shopify.com/videos/c/o/v/7daef148e2a6416daffd5bf9682b015f.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+        
+
+
+           
+          </div>
+        </div>
+      </div>
+
+
+          <!-- Video Review Item 3 -->
+      <div class="video-review-item">
+        <div class="video-wrapper">
+          <div class="video-container">
+            <video loop muted playsinline>
+              <source src="https://cdn.shopify.com/videos/c/o/v/7daef148e2a6416daffd5bf9682b015f.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+        
+
+
+           
+          </div>
+        </div>
+      </div>
+
+          <!-- Video Review Item 3 -->
+      <div class="video-review-item">
+        <div class="video-wrapper">
+          <div class="video-container">
+            <video loop muted playsinline>
+              <source src="https://cdn.shopify.com/videos/c/o/v/7daef148e2a6416daffd5bf9682b015f.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+        
+
+
+           
+          </div>
+        </div>
+      </div>
+
+
+          <!-- Video Review Item 3 -->
+      <div class="video-review-item">
+        <div class="video-wrapper">
+          <div class="video-container">
+            <video loop muted playsinline>
+              <source src="https://cdn.shopify.com/videos/c/o/v/7daef148e2a6416daffd5bf9682b015f.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+        
+
+
+           
+          </div>
+        </div>
+      </div>
+
+
+
+          <!-- Video Review Item 3 -->
+      <div class="video-review-item">
+        <div class="video-wrapper">
+          <div class="video-container">
+            <video loop muted playsinline>
+              <source src="https://cdn.shopify.com/videos/c/o/v/7daef148e2a6416daffd5bf9682b015f.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+        
+
+
+           
+          </div>
+        </div>
+      </div>
+
+
+          <!-- Video Review Item 3 -->
+      <div class="video-review-item">
+        <div class="video-wrapper">
+          <div class="video-container">
+            <video loop muted playsinline>
+              <source src="https://cdn.shopify.com/videos/c/o/v/7daef148e2a6416daffd5bf9682b015f.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+        
+
+
+           
+          </div>
+        </div>
+      </div>
+
+      <!-- Add more video items as needed -->
+    </div>
+  </div>
+</section>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Slick JS -->
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+<script>
+$(document).ready(function(){
+  var $slider = $('.video-reviews-slider');
+
+  // Function to pause all videos
+  function pauseAllVideos() {
+    $('.video-reviews-slider video').each(function() {
+      this.pause();
+      this.currentTime = 0;
+      $(this).closest('.video-container').removeClass('playing');
+      updatePlayPauseButton($(this).closest('.video-wrapper'), false);
+    });
+    $('.video-reviews-slider').removeClass('playing');
+  }
+
+  // Function to update play/pause button icon
+  function updatePlayPauseButton($wrapper, isPlaying) {
+    var $btn = $wrapper.find('.play-pause-btn');
+    if (isPlaying) {
+      $btn.find('.play-icon').hide();
+      $btn.find('.pause-icon').show();
+    } else {
+      $btn.find('.play-icon').show();
+      $btn.find('.pause-icon').hide();
+    }
+  }
+
+  // Function to update mute/unmute button icon
+  function updateMuteButton($wrapper, isMuted) {
+    var $btn = $wrapper.find('.mute-btn');
+    if (isMuted) {
+      $btn.find('.volume-on-icon').hide();
+      $btn.find('.volume-off-icon').show();
+    } else {
+      $btn.find('.volume-on-icon').show();
+      $btn.find('.volume-off-icon').hide();
+    }
+  }
+
+  // Function to play video in active slide
+  function playActiveVideo() {
+    var $activeSlide = $('.video-reviews-slider .slick-slide.slick-center');
+    
+    if ($activeSlide.length === 0) return;
+
+    var video = $activeSlide.find('video')[0];
+    
+    if (!video) return;
+
+    video.muted = true;
+
+    var playPromise = video.play();
+
+    if (playPromise !== undefined) {
+      playPromise
+        .then(function() {
+          $activeSlide.find('.video-container').addClass('playing');
+          $('.video-reviews-slider').addClass('playing');
+          updatePlayPauseButton($activeSlide.find('.video-wrapper'), true);
+          updateMuteButton($activeSlide.find('.video-wrapper'), video.muted);
+        })
+        .catch(function(error) {
+          console.log('Play failed:', error);
+        });
+    }
+  }
+
+  // Initialize Slick Slider
+  $slider.slick({
+    centerMode: true,
+    centerPadding: '0px',
+    slidesToShow: 5,
+    infinite: true,
+    arrows: true,
+    dots: true,
+    autoplay: false,
+    autoplaySpeed: 5000,
+    pauseOnHover: true,
+    focusOnSelect: true,
+    responsive: [
+      {
+        breakpoint: 1000,
+        settings: {
+          slidesToShow: 2,
+          arrows: true,
+          centerPadding: '0px'
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          arrows: false,
+          centerPadding: '0px'
+        }
+      }
+    ]
+  });
+
+  // Slick Events
+  $slider.on('init', function(event, slick) {
+    setTimeout(function() {
+      playActiveVideo();
+    }, 500);
+  });
+
+  $slider.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+    pauseAllVideos();
+  });
+
+  $slider.on('afterChange', function(event, slick, currentSlide) {
+    setTimeout(function() {
+      playActiveVideo();
+    }, 300);
+  });
+
+  // Play/Pause button click
+  $(document).on('click', '.play-pause-btn', function(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    var $wrapper = $(this).closest('.video-wrapper');
+    var $container = $wrapper.find('.video-container');
+    var video = $container.find('video')[0];
+    
+    if (!video) return;
+
+    if (video.paused) {
+      var playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.then(function() {
+          $container.addClass('playing');
+          $('.video-reviews-slider').addClass('playing');
+          updatePlayPauseButton($wrapper, true);
+          $slider.slick('slickPause');
+        }).catch(function(err) {
+          console.log('Play error:', err);
+        });
+      }
+    } else {
+      video.pause();
+      $container.removeClass('playing');
+      $('.video-reviews-slider').removeClass('playing');
+      updatePlayPauseButton($wrapper, false);
+    }
+  });
+
+  // Mute/Unmute button click
+  $(document).on('click', '.mute-btn', function(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    var $wrapper = $(this).closest('.video-wrapper');
+    var video = $wrapper.find('video')[0];
+    
+    if (video) {
+      video.muted = !video.muted;
+      updateMuteButton($wrapper, video.muted);
+    }
+  });
+
+  // Video events
+  $(document).on('ended', 'video', function() {
+    var $wrapper = $(this).closest('.video-wrapper');
+    var $container = $(this).closest('.video-container');
+    updatePlayPauseButton($wrapper, false);
+    $container.removeClass('playing');
+    $('.video-reviews-slider').removeClass('playing');
+  });
+
+  $(document).on('play', 'video', function() {
+    var $wrapper = $(this).closest('.video-wrapper');
+    var $container = $(this).closest('.video-container');
+    $container.addClass('playing');
+    $('.video-reviews-slider').addClass('playing');
+    updatePlayPauseButton($wrapper, true);
+  });
+
+  $(document).on('pause', 'video', function() {
+    var $wrapper = $(this).closest('.video-wrapper');
+    var $container = $(this).closest('.video-container');
+    $container.removeClass('playing');
+    $('.video-reviews-slider').removeClass('playing');
+    updatePlayPauseButton($wrapper, false);
+  });
+
+  $(document).on('volumechange', 'video', function() {
+    var $wrapper = $(this).closest('.video-wrapper');
+    updateMuteButton($wrapper, this.muted);
+  });
+});
+</script>
+
+</body>
+</html>
