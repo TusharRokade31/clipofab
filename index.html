@@ -13,7 +13,7 @@
        
         <title>ClipOFab | Ceilings Wall Covering And Acoustic</title>
         
-		<link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+		<link rel="shortcut icon" type="image/x-icon" href="img/favicon.jpg">
 		
 		<!-- Font Awesome CSS -->
         <link rel="stylesheet" href="css/fontawesome.min.css">
@@ -43,6 +43,7 @@
         <link rel="stylesheet" href="css/main.css">
 		<!-- Responsive CSS -->
         <link rel="stylesheet" href="css/responsive.css">
+
 
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     </head>
@@ -219,255 +220,15 @@
                 </div>
             </div>
         </section>
-        
 
+      <div id="reels"></div>
+       <script>
+    fetch("reels-section.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("reels").innerHTML = data)
+      .catch(err => console.error("Error loading reels:", err));
+  </script>
         
-        <!-- <section class="projects-section padding">
-            <div class="container-fluid">
-                <div class="container">
-                <div class="section-heading text-center mb-40">
-                   <span>Projects</span>
-                   <h2>Our Work – Bringing Ideas to Life with ClipOFab</h2>
-                   <p> At ClipOFab, we’re passionate about turning visions into reality. From luxury hotels and modern offices to cultural venues and sports complexes, our textile systems have elevated countless spaces. Here are just a few examples of our work:</p>
-                   </div>
-                </div>
-                <div id="projects-carousel" class="projects-carousel owl-carousel">
-                    <div class="project-item">
-                        <img src="img/projects/project-1.jpg" alt="projects">
-                        <div class="overlay"></div>
-                        <a href="img/projects/project-1.jpg" class="view-icon img-popup" data-gall="myGallery"> <i class="fas fa-expand"></i></a>
-                        <div class="projects-content">
-                            <a href="projects.html" class="category">Translucent</a>
-                            <h3><a href="project-single.html" class="tittle">Meeting Room</a></h3>
-                        </div>
-                    </div>
-                    <div class="project-item">
-                        <img src="img/projects/project-2.jpg" alt="projects">
-                        <div class="overlay"></div>
-                        <a href="img/projects/project-2.jpg" class="view-icon img-popup" data-gall="myGallery"> <i class="fas fa-expand"></i></a>
-                        <div class="projects-content">
-                            <a href="projects.html" class="category">Opaque</a>
-                            <h3><a href="project-single.html" class="tittle">Lobby Area</a></h3>
-                        </div>
-                    </div>
-                    <div class="project-item">
-                        <img src="img/projects/project-5.jpg" alt="projects">
-                        <div class="overlay"></div>
-                        <a href="img/projects/project-5.jpg" class="view-icon img-popup" data-gall="myGallery"> <i class="fas fa-expand"></i></a>
-                        <div class="projects-content">
-                            <a href="projects.html" class="category">Translucent</a>
-                            <h3><a href="project-single.html" class="tittle">Office Cabin</a></h3>
-                        </div>
-                    </div>
-                    <div class="project-item">
-                        <img src="img/projects/project-4.jpg" alt="projects">
-                        <div class="overlay"></div>
-                        <a href="img/projects/project-4.jpg" class="view-icon img-popup" data-gall="myGallery"> <i class="fas fa-expand"></i></a>
-                        <div class="projects-content">
-                            <a href="projects.html" class="category">Acoustic</a>
-                            <h3><a href="project-single.html" class="tittle">Entertainment Room</a></h3>
-                        </div>
-                    </div>
-                    <div class="project-item">
-                        <img src="img/projects/project-3.jpg" alt="projects">
-                        <div class="overlay"></div>
-                        <a href="img/projects/project-3.jpg" class="view-icon img-popup" data-gall="myGallery"> <i class="fas fa-expand"></i></a>
-                        <div class="projects-content">
-                            <a href="projects.html" class="category">Acoustic</a>
-                            <h3><a href="project-single.html" class="tittle">Home Theater</a></h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-        
-        <!--
-        <section class="team-section padding">
-            <div class="container">
-                <div class="section-heading text-center mb-40">
-                   <span>Team</span>
-                   <h2>Speciallized team</h2>
-                </div>
-                <div class="row team-wrap">
-                    <div class="col-lg-3 col-sm-6 padding-15">
-                        <div class="team-item">
-                           <div class="overlay"></div>
-                            <img src="img/team-1.jpg" alt="team">
-                            <div class="team-content">
-                                <h3>Jhon Castellon</h3>
-                                <span>Architect</span>
-                            </div>
-                            <ul class="team-social">
-                                <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                <li><a href="#"><i class="ti-twitter"></i></a></li>
-                                <li><a href="#"><i class="ti-instagram"></i></a></li>
-                                <li><a href="#"><i class="ti-youtube"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 padding-15">
-                        <div class="team-item">
-                           <div class="overlay"></div>
-                            <img src="img/team-2.jpg" alt="team">
-                            <div class="team-content">
-                                <h3>José Carpio</h3>
-                                <span>Designer</span>
-                            </div>
-                            <ul class="team-social">
-                                <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                <li><a href="#"><i class="ti-twitter"></i></a></li>
-                                <li><a href="#"><i class="ti-instagram"></i></a></li>
-                                <li><a href="#"><i class="ti-youtube"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 padding-15">
-                        <div class="team-item">
-                           <div class="overlay"></div>
-                            <img src="img/team-3.jpg" alt="team">
-                            <div class="team-content">
-                                <h3>Valentin Lacoste</h3>
-                                <span>Developer</span>
-                            </div>
-                            <ul class="team-social">
-                                <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                <li><a href="#"><i class="ti-twitter"></i></a></li>
-                                <li><a href="#"><i class="ti-instagram"></i></a></li>
-                                <li><a href="#"><i class="ti-youtube"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 padding-15">
-                        <div class="team-item">
-                           <div class="overlay"></div>
-                            <img src="img/team-4.jpg" alt="team">
-                            <div class="team-content">
-                                <h3>Kyle Frederick</h3>
-                                <span>Marketer</span>
-                            </div>
-                            <ul class="team-social">
-                                <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                <li><a href="#"><i class="ti-twitter"></i></a></li>
-                                <li><a href="#"><i class="ti-instagram"></i></a></li>
-                                <li><a href="#"><i class="ti-youtube"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>-->
-        <!--/.team-section-->
-        <!--
-        <section class="testimonial-section bg-grey padding">
-           <div class="dots"></div>
-            <div class="container">
-                <div class="section-heading text-center mb-40">
-                   <span>Testimonial</span>
-                   <h2>What people says</h2>
-                </div>
-                <div id="testimonial-carousel" class="testimonial-carousel owl-carousel">
-                    <div class="testi-item d-flex align-items-center">
-                        <img src="img/testi-1.jpg" alt="img">
-                        <div class="testi-content">
-                            <p>"Thank you for guiding us through the construction process, understanding, and always ready to accommodate our needs. We love our new space and know that it was built by the very best!"</p>
-                            <h3>Kyle Frederick</h3>
-                            <ul class="rattings">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                            <span>Director</span>
-                        </div>
-                        <i class="fa fa-quote-right"></i>
-                    </div>
-                    <div class="testi-item d-flex align-items-center">
-                        <img src="img/testi-2.jpg" alt="img">
-                        <div class="testi-content">
-                            <p>"Thank you for guiding us through the construction process, understanding, and always ready to accommodate our needs. We love our new space and know that it was built by the very best!"</p>
-                            <h3>Valentin Lacoste</h3>
-                            <ul class="rattings">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                            <span>Director</span>
-                        </div>
-                        <i class="fa fa-quote-right"></i>
-                    </div>
-                    <div class="testi-item d-flex align-items-center">
-                        <img src="img/testi-3.jpg" alt="img">
-                        <div class="testi-content">
-                            <p>"Thank you for guiding us through the construction process, understanding, and always ready to accommodate our needs. We love our new space and know that it was built by the very best!"</p>
-                            <h3>José Carpio</h3>
-                            <ul class="rattings">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                            <span>Director</span>
-                        </div>
-                        <i class="fa fa-quote-right"></i>
-                    </div>
-                </div>
-            </div>
-        </section>/.testimonial-section-->
-        
-        <!-- <section class="blog-section padding">
-            <div class="container">
-               <div class="section-heading text-center mb-40">
-                   <span>From Blog</span>
-                   <h2>Case Studies</h2>
-                </div>
-                <div class="row blog-wrap">
-                    <div class="col-lg-4 col-sm-6 sm-padding">
-                        <div class="blog-item">
-                            <div class="blog-thumb">
-                                <img src="img/post-1.jpg" alt="post">
-                                <span class="category"><a href="#">interior</a></span>
-                            </div>
-                            <div class="blog-content">
-                                <h3><a href="#">Minimalist trending in modern architecture 2019</a></h3>
-                                <p>Building first evolved out dynamics between needs means available building materials attendant skills.</p>
-                                <a href="#" class="read-more">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 sm-padding">
-                        <div class="blog-item">
-                            <div class="blog-thumb">
-                                <img src="img/post-2.jpg" alt="post">
-                                <span class="category"><a href="#">Architecture</a></span>
-                            </div>
-                            <div class="blog-content">
-                               <h3><a href="#">Terrace in the town yamazaki kentaro design workshop.</a></h3>
-                                <p>Building first evolved out dynamics between needs means available building materials attendant skills.</p>
-                                <a href="#" class="read-more">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 sm-padding">
-                        <div class="blog-item">
-                            <div class="blog-thumb">
-                                <img src="img/post-3.jpg" alt="post">
-                                <span class="category"><a href="#">Design</a></span>
-                            </div>
-                            <div class="blog-content">
-                                <h3><a href="#">W270 house são paulo arquitetos fabio jorge architeqture.</a></h3>
-                                <p>Building first evolved out dynamics between needs means available building materials attendant skills.</p>
-                                <a href="#" class="read-more">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-        <!--/.blog-section-->
         
         <div class="sponsor-section bg-grey">
            <div class="dots"></div>
@@ -543,7 +304,202 @@
 		<!-- Main JS -->
 		<script src="js/main.js"></script>
 
-    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98de4358aafbe1cd',t:'MTc2MDM1MjQ5MA=='};var a=document.createElement('script');a.src='../../cdn-cgi/challenge-platform/h/g/scripts/jsd/e9c9e9d67513/maind41d.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98de4358aafbe1cd',t:'MTc2MDM1MjQ5MA=='};var a=document.createElement('script');a.src='../../cdn-cgi/challenge-platform/h/g/scripts/jsd/e9c9e9d67513/maind41d.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+
+    <!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Owl Carousel JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+<script>
+$(document).ready(function(){
+  var $slider = $('.video-reviews-slider');
+
+  // Function to pause all videos
+  function pauseAllVideos() {
+    $('.video-reviews-slider video').each(function() {
+      this.pause();
+      this.currentTime = 0;
+      $(this).closest('.video-container').removeClass('playing');
+      updatePlayPauseButton($(this).closest('.video-wrapper'), false);
+    });
+    $('.video-reviews-slider').removeClass('playing');
+  }
+
+  // Function to update play/pause button icon
+  function updatePlayPauseButton($wrapper, isPlaying) {
+    var $btn = $wrapper.find('.play-pause-btn');
+    if (isPlaying) {
+      $btn.find('.play-icon').hide();
+      $btn.find('.pause-icon').show();
+    } else {
+      $btn.find('.play-icon').show();
+      $btn.find('.pause-icon').hide();
+    }
+  }
+
+  // Function to update mute/unmute button icon
+  function updateMuteButton($wrapper, isMuted) {
+    var $btn = $wrapper.find('.mute-btn');
+    if (isMuted) {
+      $btn.find('.volume-on-icon').hide();
+      $btn.find('.volume-off-icon').show();
+    } else {
+      $btn.find('.volume-on-icon').show();
+      $btn.find('.volume-off-icon').hide();
+    }
+  }
+
+  // Function to play video in active slide
+  function playActiveVideo() {
+    var $activeSlide = $('.video-reviews-slider .owl-item.center');
+    
+    if ($activeSlide.length === 0) return;
+
+    var video = $activeSlide.find('video')[0];
+    
+    if (!video) return;
+
+    video.muted = true;
+
+    var playPromise = video.play();
+
+    if (playPromise !== undefined) {
+      playPromise
+        .then(function() {
+          $activeSlide.find('.video-container').addClass('playing');
+          $('.video-reviews-slider').addClass('playing');
+          updatePlayPauseButton($activeSlide.find('.video-wrapper'), true);
+          updateMuteButton($activeSlide.find('.video-wrapper'), video.muted);
+        })
+        .catch(function(error) {
+          console.log('Play failed:', error);
+        });
+    }
+  }
+
+  // Initialize Owl Carousel
+  $slider.owlCarousel({
+    center: true,
+    items: 5,
+    loop: true,
+    margin: 0,
+    nav: true,
+    dots: true,
+    autoplay: false,
+    autoplayTimeout: 5000,
+    autoplayHoverPause: true,
+    responsive: {
+      0: {
+        items: 1,
+        nav: false
+      },
+      600: {
+        items: 2,
+        nav: true
+      },
+      1000: {
+        items: 5,
+        nav: true
+      }
+    }
+  });
+
+// Play video on initial load
+  setTimeout(function() {
+    playActiveVideo();
+  }, 500);
+
+  // Owl Carousel Events
+  $slider.on('changed.owl.carousel', function(event) {
+    pauseAllVideos();
+    setTimeout(function() {
+      playActiveVideo();
+    }, 300);
+  });
+
+  $slider.on('translate.owl.carousel', function(event) {
+    pauseAllVideos();
+  });
+
+  // Play/Pause button click
+  $(document).on('click', '.play-pause-btn', function(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    var $wrapper = $(this).closest('.video-wrapper');
+    var $container = $wrapper.find('.video-container');
+    var video = $container.find('video')[0];
+    
+    if (!video) return;
+
+    if (video.paused) {
+      var playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.then(function() {
+          $container.addClass('playing');
+          $('.video-reviews-slider').addClass('playing');
+          updatePlayPauseButton($wrapper, true);
+        }).catch(function(err) {
+          console.log('Play error:', err);
+        });
+      }
+    } else {
+      video.pause();
+      $container.removeClass('playing');
+      $('.video-reviews-slider').removeClass('playing');
+      updatePlayPauseButton($wrapper, false);
+    }
+  });
+
+  // Mute/Unmute button click
+  $(document).on('click', '.mute-btn', function(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    var $wrapper = $(this).closest('.video-wrapper');
+    var video = $wrapper.find('video')[0];
+    
+    if (video) {
+      video.muted = !video.muted;
+      updateMuteButton($wrapper, video.muted);
+    }
+  });
+
+  // Video events
+  $(document).on('ended', 'video', function() {
+    var $wrapper = $(this).closest('.video-wrapper');
+    var $container = $(this).closest('.video-container');
+    updatePlayPauseButton($wrapper, false);
+    $container.removeClass('playing');
+    $('.video-reviews-slider').removeClass('playing');
+  });
+
+  $(document).on('play', 'video', function() {
+    var $wrapper = $(this).closest('.video-wrapper');
+    var $container = $(this).closest('.video-container');
+    $container.addClass('playing');
+    $('.video-reviews-slider').addClass('playing');
+    updatePlayPauseButton($wrapper, true);
+  });
+
+  $(document).on('pause', 'video', function() {
+    var $wrapper = $(this).closest('.video-wrapper');
+    var $container = $(this).closest('.video-container');
+    $container.removeClass('playing');
+    $('.video-reviews-slider').removeClass('playing');
+    updatePlayPauseButton($wrapper, false);
+  });
+
+  $(document).on('volumechange', 'video', function() {
+    var $wrapper = $(this).closest('.video-wrapper');
+    updateMuteButton($wrapper, this.muted);
+  });
+});
+</script>
+
+
+
+
+</body>
 
 <!-- Mirrored from html.dynamiclayers.net/dl/arkit/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 13 Oct 2025 10:48:32 GMT -->
 </html>

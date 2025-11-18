@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Video Reviews Carousel</title>
+
   
-  <!-- Slick CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
+  <!-- Owl Carousel CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
   
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -19,9 +14,6 @@
       box-sizing: border-box;
     }
 
-    body {
-      font-family: Arial, sans-serif;
-    }
 
     .video-review-section {
       padding: 60px 0;
@@ -59,7 +51,7 @@
 
     .video-review-item {
       overflow: hidden;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, opacity 0.3s ease;
       padding: 0 20px;
       outline: none;
     }
@@ -126,7 +118,7 @@
     }
 
     /* Show control buttons only on center slide */
-    .slick-slide.slick-center .video-control-btn {
+    .owl-item.center .video-control-btn {
       opacity: 1;
       visibility: visible;
       display: flex !important;
@@ -146,28 +138,30 @@
       display: none;
     }
 
-    /* Slick Slider Styling */
-    .video-reviews-slider .slick-slide {
+    /* Owl Carousel Styling */
+    .video-reviews-slider .owl-item {
       opacity: 0.5;
       transform: scale(0.85);
       transition: all 0.3s ease;
     }
 
-    .video-reviews-slider .slick-slide.slick-center {
+    .video-reviews-slider .owl-item.center {
       opacity: 1;
       transform: scale(1);
       z-index: 10;
     }
 
-    .video-reviews-slider .slick-list {
-      overflow: visible;
-    }
-
-    /* Slick Navigation */
-    .video-reviews-slider .slick-arrow {
+    /* Owl Navigation Arrows */
+    .video-reviews-slider .owl-nav {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
+      width: 100%;
+      pointer-events: none;
+    }
+
+    .video-reviews-slider .owl-nav button {
+      position: absolute;
       background: #333333 !important;
       color: #ffffff !important;
       width: 50px;
@@ -181,39 +175,43 @@
       z-index: 100;
       border: none;
       cursor: pointer;
-      font-size: 0;
-    }
-
-    .video-reviews-slider .slick-arrow:before {
-      font-family: 'Font Awesome 6 Free';
-      font-weight: 900;
       font-size: 18px;
-      color: #ffffff;
+      pointer-events: all;
     }
 
-    .video-reviews-slider .slick-arrow:hover {
-      background: #ff5722 !important;
+    .video-reviews-slider .owl-nav button:hover {
+      background: #2c8640 !important;
       opacity: 1;
     }
 
-    .video-reviews-slider .slick-prev {
+    .video-reviews-slider .owl-nav button.owl-prev {
       left: 0px;
     }
 
-    .video-reviews-slider .slick-prev:before {
-      content: '\f053';
-    }
-
-    .video-reviews-slider .slick-next {
+    .video-reviews-slider .owl-nav button.owl-next {
       right: 0px;
     }
 
-    .video-reviews-slider .slick-next:before {
-      content: '\f054';
+    .video-reviews-slider .owl-nav button span {
+      font-size: 0;
     }
 
-    /* Slick Dots */
-    .video-reviews-slider .slick-dots {
+    .video-reviews-slider .owl-nav button.owl-prev:before {
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      content: '\f053';
+      font-size: 18px;
+    }
+
+    .video-reviews-slider .owl-nav button.owl-next:before {
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      content: '\f054';
+      font-size: 18px;
+    }
+
+    /* Owl Dots */
+    .video-reviews-slider .owl-dots {
       text-align: center;
       margin-top: 30px;
       padding: 0;
@@ -223,12 +221,7 @@
       gap: 10px;
     }
 
-    .video-reviews-slider .slick-dots li {
-      display: inline-block;
-      margin: 0;
-    }
-
-    .video-reviews-slider .slick-dots li button {
+    .video-reviews-slider .owl-dots button.owl-dot {
       width: 12px;
       height: 12px;
       background: #ddd;
@@ -238,16 +231,15 @@
       border: none;
       padding: 0;
       cursor: pointer;
-      font-size: 0;
     }
 
-    .video-reviews-slider .slick-dots li button:before {
+    .video-reviews-slider .owl-dots button.owl-dot span {
       display: none;
     }
 
-    .video-reviews-slider .slick-dots li.slick-active button,
-    .video-reviews-slider .slick-dots li:hover button {
-      background: #ff5722;
+    .video-reviews-slider .owl-dots button.owl-dot.active,
+    .video-reviews-slider .owl-dots button.owl-dot:hover {
+      background: #2c8640;
       transform: scale(1.2);
     }
 
@@ -281,17 +273,17 @@
         right: 10px;
       }
 
-      .video-reviews-slider .slick-arrow {
+      .video-reviews-slider .owl-nav button {
         width: 40px;
         height: 40px;
       }
 
-      .video-reviews-slider .slick-arrow:before {
+      .video-reviews-slider .owl-nav button:before {
         font-size: 16px;
       }
     }
   </style>
-</head>
+
 <body>
 
 <section class="video-review-section">
@@ -301,21 +293,31 @@
       <p class="section-subtitle">See what our customers have to say</p>
     </div>
 
-    <div class="video-reviews-slider">
+    <div class="video-reviews-slider owl-carousel">
       <!-- Video Review Item 1 -->
       <div class="video-review-item">
         <div class="video-wrapper">
           <div class="video-container">
             <video loop muted playsinline>
-              <source src="https://cdn.shopify.com/videos/c/o/v/7daef148e2a6416daffd5bf9682b015f.mp4" type="video/mp4">
+              <source src="./reels/reel1.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
-        
-            <!-- Play/Pause Control Button -->
-
-
-            <!-- Mute/Unmute Button -->
-           
+            <button class="video-control-btn play-pause-btn">
+              <svg class="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+              <svg class="pause-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+              </svg>
+            </button>
+            <button class="video-control-btn mute-btn">
+              <svg class="volume-off-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+              </svg>
+              <svg class="volume-on-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+              </svg>
+            </button>
           </div>
         </div>
       </div>
@@ -325,13 +327,25 @@
         <div class="video-wrapper">
           <div class="video-container">
             <video loop muted playsinline>
-              <source src="https://cdn.shopify.com/videos/c/o/v/7daef148e2a6416daffd5bf9682b015f.mp4" type="video/mp4">
+              <source src="./reels/reel2.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
-        
-
-
-           
+            <button class="video-control-btn play-pause-btn">
+              <svg class="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+              <svg class="pause-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+              </svg>
+            </button>
+            <button class="video-control-btn mute-btn">
+              <svg class="volume-off-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+              </svg>
+              <svg class="volume-on-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+              </svg>
+            </button>
           </div>
         </div>
       </div>
@@ -341,435 +355,118 @@
         <div class="video-wrapper">
           <div class="video-container">
             <video loop muted playsinline>
-              <source src="https://cdn.shopify.com/videos/c/o/v/7daef148e2a6416daffd5bf9682b015f.mp4" type="video/mp4">
+              <source src="./reels/reel3.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
-        
-
-
-           
+            <button class="video-control-btn play-pause-btn">
+              <svg class="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+              <svg class="pause-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+              </svg>
+            </button>
+            <button class="video-control-btn mute-btn">
+              <svg class="volume-off-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+              </svg>
+              <svg class="volume-on-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+              </svg>
+            </button>
           </div>
         </div>
       </div>
 
-          <!-- Video Review Item 3 -->
+      <!-- Video Review Item 4 -->
       <div class="video-review-item">
         <div class="video-wrapper">
           <div class="video-container">
             <video loop muted playsinline>
-              <source src="https://cdn.shopify.com/videos/c/o/v/7daef148e2a6416daffd5bf9682b015f.mp4" type="video/mp4">
+              <source src="./reels/reel4.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
-        
-
-
-           
+            <button class="video-control-btn play-pause-btn">
+              <svg class="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+              <svg class="pause-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+              </svg>
+            </button>
+            <button class="video-control-btn mute-btn">
+              <svg class="volume-off-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+              </svg>
+              <svg class="volume-on-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+              </svg>
+            </button>
           </div>
         </div>
       </div>
 
-
-          <!-- Video Review Item 3 -->
+      <!-- Video Review Item 5 -->
       <div class="video-review-item">
         <div class="video-wrapper">
           <div class="video-container">
             <video loop muted playsinline>
-              <source src="https://cdn.shopify.com/videos/c/o/v/7daef148e2a6416daffd5bf9682b015f.mp4" type="video/mp4">
+              <source src="./reels/reel5.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
-        
-
-
-           
+            <button class="video-control-btn play-pause-btn">
+              <svg class="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+              <svg class="pause-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+              </svg>
+            </button>
+            <button class="video-control-btn mute-btn">
+              <svg class="volume-off-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+              </svg>
+              <svg class="volume-on-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+              </svg>
+            </button>
           </div>
         </div>
       </div>
 
-
-          <!-- Video Review Item 3 -->
+      <!-- Video Review Item 6 -->
       <div class="video-review-item">
         <div class="video-wrapper">
           <div class="video-container">
             <video loop muted playsinline>
-              <source src="https://cdn.shopify.com/videos/c/o/v/7daef148e2a6416daffd5bf9682b015f.mp4" type="video/mp4">
+              <source src="./reels/reel6.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
-        
-
-
-           
+            <button class="video-control-btn play-pause-btn">
+              <svg class="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+              <svg class="pause-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+              </svg>
+            </button>
+            <button class="video-control-btn mute-btn">
+              <svg class="volume-off-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+              </svg>
+              <svg class="volume-on-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+              </svg>
+            </button>
           </div>
         </div>
       </div>
 
-          <!-- Video Review Item 3 -->
-      <div class="video-review-item">
-        <div class="video-wrapper">
-          <div class="video-container">
-            <video loop muted playsinline>
-              <source src="https://cdn.shopify.com/videos/c/o/v/7daef148e2a6416daffd5bf9682b015f.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-        
-
-
-           
-          </div>
-        </div>
-      </div>
-
-
-          <!-- Video Review Item 3 -->
-      <div class="video-review-item">
-        <div class="video-wrapper">
-          <div class="video-container">
-            <video loop muted playsinline>
-              <source src="https://cdn.shopify.com/videos/c/o/v/7daef148e2a6416daffd5bf9682b015f.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-        
-
-
-           
-          </div>
-        </div>
-      </div>
-
-          <!-- Video Review Item 3 -->
-      <div class="video-review-item">
-        <div class="video-wrapper">
-          <div class="video-container">
-            <video loop muted playsinline>
-              <source src="https://cdn.shopify.com/videos/c/o/v/7daef148e2a6416daffd5bf9682b015f.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-        
-
-
-           
-          </div>
-        </div>
-      </div>
-
-
-          <!-- Video Review Item 3 -->
-      <div class="video-review-item">
-        <div class="video-wrapper">
-          <div class="video-container">
-            <video loop muted playsinline>
-              <source src="https://cdn.shopify.com/videos/c/o/v/7daef148e2a6416daffd5bf9682b015f.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-        
-
-
-           
-          </div>
-        </div>
-      </div>
-
-
-          <!-- Video Review Item 3 -->
-      <div class="video-review-item">
-        <div class="video-wrapper">
-          <div class="video-container">
-            <video loop muted playsinline>
-              <source src="https://cdn.shopify.com/videos/c/o/v/7daef148e2a6416daffd5bf9682b015f.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-        
-
-
-           
-          </div>
-        </div>
-      </div>
-
-
-          <!-- Video Review Item 3 -->
-      <div class="video-review-item">
-        <div class="video-wrapper">
-          <div class="video-container">
-            <video loop muted playsinline>
-              <source src="https://cdn.shopify.com/videos/c/o/v/7daef148e2a6416daffd5bf9682b015f.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-        
-
-
-           
-          </div>
-        </div>
-      </div>
-
-          <!-- Video Review Item 3 -->
-      <div class="video-review-item">
-        <div class="video-wrapper">
-          <div class="video-container">
-            <video loop muted playsinline>
-              <source src="https://cdn.shopify.com/videos/c/o/v/7daef148e2a6416daffd5bf9682b015f.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-        
-
-
-           
-          </div>
-        </div>
-      </div>
-
-
-          <!-- Video Review Item 3 -->
-      <div class="video-review-item">
-        <div class="video-wrapper">
-          <div class="video-container">
-            <video loop muted playsinline>
-              <source src="https://cdn.shopify.com/videos/c/o/v/7daef148e2a6416daffd5bf9682b015f.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-        
-
-
-           
-          </div>
-        </div>
-      </div>
-
-
-
-          <!-- Video Review Item 3 -->
-      <div class="video-review-item">
-        <div class="video-wrapper">
-          <div class="video-container">
-            <video loop muted playsinline>
-              <source src="https://cdn.shopify.com/videos/c/o/v/7daef148e2a6416daffd5bf9682b015f.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-        
-
-
-           
-          </div>
-        </div>
-      </div>
-
-
-          <!-- Video Review Item 3 -->
-      <div class="video-review-item">
-        <div class="video-wrapper">
-          <div class="video-container">
-            <video loop muted playsinline>
-              <source src="https://cdn.shopify.com/videos/c/o/v/7daef148e2a6416daffd5bf9682b015f.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-        
-
-
-           
-          </div>
-        </div>
-      </div>
-
-      <!-- Add more video items as needed -->
     </div>
   </div>
 </section>
 
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- Slick JS -->
-<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
-<script>
-$(document).ready(function(){
-  var $slider = $('.video-reviews-slider');
-
-  // Function to pause all videos
-  function pauseAllVideos() {
-    $('.video-reviews-slider video').each(function() {
-      this.pause();
-      this.currentTime = 0;
-      $(this).closest('.video-container').removeClass('playing');
-      updatePlayPauseButton($(this).closest('.video-wrapper'), false);
-    });
-    $('.video-reviews-slider').removeClass('playing');
-  }
-
-  // Function to update play/pause button icon
-  function updatePlayPauseButton($wrapper, isPlaying) {
-    var $btn = $wrapper.find('.play-pause-btn');
-    if (isPlaying) {
-      $btn.find('.play-icon').hide();
-      $btn.find('.pause-icon').show();
-    } else {
-      $btn.find('.play-icon').show();
-      $btn.find('.pause-icon').hide();
-    }
-  }
-
-  // Function to update mute/unmute button icon
-  function updateMuteButton($wrapper, isMuted) {
-    var $btn = $wrapper.find('.mute-btn');
-    if (isMuted) {
-      $btn.find('.volume-on-icon').hide();
-      $btn.find('.volume-off-icon').show();
-    } else {
-      $btn.find('.volume-on-icon').show();
-      $btn.find('.volume-off-icon').hide();
-    }
-  }
-
-  // Function to play video in active slide
-  function playActiveVideo() {
-    var $activeSlide = $('.video-reviews-slider .slick-slide.slick-center');
-    
-    if ($activeSlide.length === 0) return;
-
-    var video = $activeSlide.find('video')[0];
-    
-    if (!video) return;
-
-    video.muted = true;
-
-    var playPromise = video.play();
-
-    if (playPromise !== undefined) {
-      playPromise
-        .then(function() {
-          $activeSlide.find('.video-container').addClass('playing');
-          $('.video-reviews-slider').addClass('playing');
-          updatePlayPauseButton($activeSlide.find('.video-wrapper'), true);
-          updateMuteButton($activeSlide.find('.video-wrapper'), video.muted);
-        })
-        .catch(function(error) {
-          console.log('Play failed:', error);
-        });
-    }
-  }
-
-  // Initialize Slick Slider
-  $slider.slick({
-    centerMode: true,
-    centerPadding: '0px',
-    slidesToShow: 5,
-    infinite: true,
-    arrows: true,
-    dots: true,
-    autoplay: false,
-    autoplaySpeed: 5000,
-    pauseOnHover: true,
-    focusOnSelect: true,
-    responsive: [
-      {
-        breakpoint: 1000,
-        settings: {
-          slidesToShow: 2,
-          arrows: true,
-          centerPadding: '0px'
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          arrows: false,
-          centerPadding: '0px'
-        }
-      }
-    ]
-  });
-
-  // Slick Events
-  $slider.on('init', function(event, slick) {
-    setTimeout(function() {
-      playActiveVideo();
-    }, 500);
-  });
-
-  $slider.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
-    pauseAllVideos();
-  });
-
-  $slider.on('afterChange', function(event, slick, currentSlide) {
-    setTimeout(function() {
-      playActiveVideo();
-    }, 300);
-  });
-
-  // Play/Pause button click
-  $(document).on('click', '.play-pause-btn', function(e) {
-    e.stopPropagation();
-    e.preventDefault();
-    var $wrapper = $(this).closest('.video-wrapper');
-    var $container = $wrapper.find('.video-container');
-    var video = $container.find('video')[0];
-    
-    if (!video) return;
-
-    if (video.paused) {
-      var playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.then(function() {
-          $container.addClass('playing');
-          $('.video-reviews-slider').addClass('playing');
-          updatePlayPauseButton($wrapper, true);
-          $slider.slick('slickPause');
-        }).catch(function(err) {
-          console.log('Play error:', err);
-        });
-      }
-    } else {
-      video.pause();
-      $container.removeClass('playing');
-      $('.video-reviews-slider').removeClass('playing');
-      updatePlayPauseButton($wrapper, false);
-    }
-  });
-
-  // Mute/Unmute button click
-  $(document).on('click', '.mute-btn', function(e) {
-    e.stopPropagation();
-    e.preventDefault();
-    var $wrapper = $(this).closest('.video-wrapper');
-    var video = $wrapper.find('video')[0];
-    
-    if (video) {
-      video.muted = !video.muted;
-      updateMuteButton($wrapper, video.muted);
-    }
-  });
-
-  // Video events
-  $(document).on('ended', 'video', function() {
-    var $wrapper = $(this).closest('.video-wrapper');
-    var $container = $(this).closest('.video-container');
-    updatePlayPauseButton($wrapper, false);
-    $container.removeClass('playing');
-    $('.video-reviews-slider').removeClass('playing');
-  });
-
-  $(document).on('play', 'video', function() {
-    var $wrapper = $(this).closest('.video-wrapper');
-    var $container = $(this).closest('.video-container');
-    $container.addClass('playing');
-    $('.video-reviews-slider').addClass('playing');
-    updatePlayPauseButton($wrapper, true);
-  });
-
-  $(document).on('pause', 'video', function() {
-    var $wrapper = $(this).closest('.video-wrapper');
-    var $container = $(this).closest('.video-container');
-    $container.removeClass('playing');
-    $('.video-reviews-slider').removeClass('playing');
-    updatePlayPauseButton($wrapper, false);
-  });
-
-  $(document).on('volumechange', 'video', function() {
-    var $wrapper = $(this).closest('.video-wrapper');
-    updateMuteButton($wrapper, this.muted);
-  });
-});
-</script>
 
 </body>
 </html>
